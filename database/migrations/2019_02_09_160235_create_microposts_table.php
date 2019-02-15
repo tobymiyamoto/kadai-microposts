@@ -13,13 +13,13 @@ class CreateMicropostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('micropost', function (Blueprint $table) {
+        Schema::create('microposts', function (Blueprint $table) {
             $table->increments('id');
              $table->integer('user_id')->unsigned()->index();
             $table->string('content');
             $table->timestamps();
             
-             // 外部キー制約
+              // 外部キー制約
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -31,6 +31,6 @@ class CreateMicropostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('micropost');
+        Schema::dropIfExists('microposts');
     }
 }
