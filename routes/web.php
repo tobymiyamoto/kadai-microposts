@@ -30,8 +30,15 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
+        Route::get('favarites', 'UsersController@favorites')->name('users.favorites');
     });
     
-      Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
-
+    
+  Route::group(['prefix' => 'microposts/{id}'], function () {
+        Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');
+        Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
+    });
+    
+    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
+  
 });
