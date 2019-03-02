@@ -14,10 +14,9 @@
             @include('user_follow.follow_button', ['user' => $user])
         </aside>
         <div class="col-sm-8">
-         <ul class="nav nav-tabs nav-justified mb-3">
-               @include('users.navtabs', ['user' => $user])
-              <!-- @include('users.users', ['users' => $users])-->
-              </ul>
+            @include('users.navtabs', ['user' => $user])
+            @include('users.users', ['users' => $users])
         </div>
+    
     </div>
 @endsection
